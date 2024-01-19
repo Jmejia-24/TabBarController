@@ -24,8 +24,8 @@
 		91A907802B54B8CB003FC283 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9077F2B54B8CB003FC283 /* ProfileView.swift */; };
 		91A907822B54B8ED003FC283 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A907812B54B8ED003FC283 /* LoginView.swift */; };
 		91A907842B54B906003FC283 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A907832B54B906003FC283 /* HomeView.swift */; };
-		91B1FC452B5A0FD300C8C95F /* SwiftUIHostingControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1FC442B5A0FD300C8C95F /* SwiftUIHostingControllerFactory.swift */; };
-		91B1FC472B5A47AA00C8C95F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1FC462B5A47AA00C8C95F /* BlurView.swift */; };
+		91B1FC522B5A4A5300C8C95F /* SwiftUIHostingControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1FC512B5A4A5200C8C95F /* SwiftUIHostingControllerFactory.swift */; };
+		91B1FC542B5A4A5700C8C95F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1FC532B5A4A5700C8C95F /* BlurView.swift */; };
 		91B3208D2B57445600DAD75C /* HomeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3208C2B57445600DAD75C /* HomeDetailCoordinator.swift */; };
 		91B3208F2B57446600DAD75C /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3208E2B57446600DAD75C /* HomeDetailViewModel.swift */; };
 		91B320912B57447500DAD75C /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B320902B57447500DAD75C /* HomeDetailView.swift */; };
@@ -60,8 +60,8 @@
 		91A9077F2B54B8CB003FC283 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		91A907812B54B8ED003FC283 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		91A907832B54B906003FC283 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		91B1FC442B5A0FD300C8C95F /* SwiftUIHostingControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftUIHostingControllerFactory.swift; path = "../../../hg-ios-v2/heroguest/Presentation/Modules/Main/Scenes/Home/SwiftUIHostingControllerFactory.swift"; sourceTree = "<group>"; };
-		91B1FC462B5A47AA00C8C95F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = "../../../hg-ios-v2/heroguest/Presentation/Modules/Main/Scenes/Home/BlurView.swift"; sourceTree = "<group>"; };
+		91B1FC512B5A4A5200C8C95F /* SwiftUIHostingControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingControllerFactory.swift; sourceTree = "<group>"; };
+		91B1FC532B5A4A5700C8C95F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		91B3208C2B57445600DAD75C /* HomeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailCoordinator.swift; sourceTree = "<group>"; };
 		91B3208E2B57446600DAD75C /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
 		91B320902B57447500DAD75C /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		914920A82B546F3E0067E3D9 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				91B1FC432B5A0FC300C8C95F /* Helpers */,
+				91B1FC562B5A4ABC00C8C95F /* Helpers */,
 				914920C12B54723B0067E3D9 /* Protocols */,
 				91A9076B2B54B57F003FC283 /* Views */,
 				91A9076A2B54B55A003FC283 /* App */,
@@ -196,11 +196,11 @@
 			path = Routers;
 			sourceTree = "<group>";
 		};
-		91B1FC432B5A0FC300C8C95F /* Helpers */ = {
+		91B1FC562B5A4ABC00C8C95F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				91B1FC442B5A0FD300C8C95F /* SwiftUIHostingControllerFactory.swift */,
-				91B1FC462B5A47AA00C8C95F /* BlurView.swift */,
+				91B1FC512B5A4A5200C8C95F /* SwiftUIHostingControllerFactory.swift */,
+				91B1FC532B5A4A5700C8C95F /* BlurView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -332,19 +332,19 @@
 				91F26EE32B585AAE00FBFB40 /* ProfileFlow.swift in Sources */,
 				91B320962B575D1A00DAD75C /* ProfileDetailViewModel.swift in Sources */,
 				91A9077E2B54B8AC003FC283 /* ProfileViewModel.swift in Sources */,
+				91B1FC542B5A4A5700C8C95F /* BlurView.swift in Sources */,
 				91A907822B54B8ED003FC283 /* LoginView.swift in Sources */,
 				91F26EDE2B58599400FBFB40 /* MainTransition.swift in Sources */,
-				91B1FC472B5A47AA00C8C95F /* BlurView.swift in Sources */,
 				914920C02B5472240067E3D9 /* AppTransition.swift in Sources */,
 				91A907772B54B6BC003FC283 /* TabBarCoordinator.swift in Sources */,
 				91F26EDC2B58597800FBFB40 /* HomeTransition.swift in Sources */,
 				914920BE2B54720C0067E3D9 /* AppFlow.swift in Sources */,
 				91F26EDA2B58595700FBFB40 /* ProfileTransition.swift in Sources */,
 				91B3208F2B57446600DAD75C /* HomeDetailViewModel.swift in Sources */,
+				91B1FC522B5A4A5300C8C95F /* SwiftUIHostingControllerFactory.swift in Sources */,
 				91F26EE52B586F4500FBFB40 /* HostingController.swift in Sources */,
 				91A907752B54B681003FC283 /* LoginCoordinator.swift in Sources */,
 				91A907712B54B611003FC283 /* HomeCoordinator.swift in Sources */,
-				91B1FC452B5A0FD300C8C95F /* SwiftUIHostingControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
