@@ -10,12 +10,27 @@ import UIKit
 final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegate {
     let appRouter: R
 
-    private var tabBarController: UITabBarController = {
+    private lazy var tabBarController: UITabBarController = {
         let tabBar = UITabBarController()
         tabBar.tabBar.backgroundColor = .white
         tabBar.tabBar.isTranslucent = false
         return tabBar
     }()
+
+    private lazy var homeCoordinator: HomeCoordinator = {
+        let homeRoute = HomeFlow(router: appRouter)
+        let coordinator = HomeCoordinator(router: homeRoute)
+        coordinator.start()
+        return coordinator
+    }()
+
+    private lazy var profileCoordinator: ProfileCoordinator = {
+        let profileRoute = ProfileFlow(router: appRouter)
+        let coordinator = ProfileCoordinator(router: profileRoute)
+        coordinator.start()
+        return coordinator
+    }()
+
 
     init(router: R) {
         self.appRouter = router
@@ -34,19 +49,11 @@ final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegat
 
         switch transition {
         case .home:
-            let homeRoute = HomeFlow(router: appRouter)
-            let homeCoordinator = HomeCoordinator(router: homeRoute)
-            homeCoordinator.start()
-
-            homeRoute.navigationController.tabBarItem = getTabItem(transition)
-            return homeRoute.navigationController
+            homeCoordinator.router.navigationController.tabBarItem = getTabItem(transition)
+            return homeCoordinator.router.navigationController
         case .profile:
-            let profileRoute = ProfileFlow(router: appRouter)
-            let profileCoordinator = ProfileCoordinator(router: profileRoute)
-            profileCoordinator.start()
-
-            profileRoute.navigationController.tabBarItem = getTabItem(transition)
-            return profileRoute.navigationController
+            profileCoordinator.router.navigationController.tabBarItem = getTabItem(transition)
+            return profileCoordinator.router.navigationController
         }
     }
 
@@ -61,10 +68,6 @@ final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegat
 
 extension TabBarCoordinator: Coordinator {
     func start() {
-        if !appRouter.navigationController.viewControllers.isEmpty {
-            appRouter.navigationController.viewControllers.removeAll()
-        }
-
         let transitions: [MainTransition] = [.home(nil), .profile(nil)]
             .sorted(by: { $0.index < $1.index })
 

@@ -14,16 +14,16 @@ final class ProfileCoordinator<R: ProfileRouter> {
         self.router = router
     }
 
-    private func primaryViewController() -> UIViewController {
+    private lazy var  primaryViewController: UIViewController = {
         let viewModel = ProfileViewModel<R>()
         viewModel.router = router
         let viewController = factory.makeHostingController(rootView: ProfileView(viewModel: viewModel))
         return viewController
-    }
+    }()
 }
 
 extension ProfileCoordinator: Coordinator {
     func start() { 
-        router.navigationController.pushViewController(primaryViewController(), animated: true)
+        router.navigationController.pushViewController(primaryViewController, animated: true)
     }
 }

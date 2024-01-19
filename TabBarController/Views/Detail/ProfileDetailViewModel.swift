@@ -17,7 +17,7 @@ final class ProfileDetailViewModel<R: ProfileRouter> {
 
 extension ProfileDetailViewModel: ProfileDetailViewModelRepresentable {
     func goTpHome() {
-        router?.navigationController.popToRootViewController(animated: true)
+        router?.resetToRoot(animated: true)
         router?.navigationController.tabBarController?.selectedIndex = 0
     }
 }

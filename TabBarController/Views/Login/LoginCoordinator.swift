@@ -24,7 +24,7 @@ final class LoginCoordinator<R: AppRouter> {
 
 extension LoginCoordinator: Coordinator {
     func start() {
-        router.resetToRoot(animated: true)
+        router.navigationController.viewControllers.removeAll()
         router.navigationController.pushViewController(primaryViewController, animated: true)
     }
 }
