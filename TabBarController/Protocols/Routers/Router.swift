@@ -16,6 +16,5 @@ protocol Router: AnyObject {
 }
 
 protocol AppRouter: Router where Route == AppTransition { }
-protocol MainRouter: Router where Route == MainTransition { }
 protocol HomeRouter: Router where Route == HomeTransition { }
 protocol ProfileRouter: Router where Route == ProfileTransition { }

@@ -9,7 +9,7 @@ import UIKit
 
 enum AppTransition {
     case showLogin
-    case showMainView(MainTransition)
+    case showMainView(TabItem)
 
     var identifier: String { "\(self)" }
 

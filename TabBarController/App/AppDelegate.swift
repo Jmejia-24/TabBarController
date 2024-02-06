@@ -16,11 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let appFlow = AppFlow()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
 
+        // Initialize window and set rootViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = appFlow.navigationController
         window?.makeKeyAndVisible()
+
+        // Start the main application flow
         appFlow.start()
 
         return true

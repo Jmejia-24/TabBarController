@@ -36,42 +36,53 @@ final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegat
         self.appRouter = router
     }
 
-    private func getTabItem(_ transition: MainTransition) -> UITabBarItem {
+    /// Creates a UITabBarItem from a given TabItem.
+    /// - Parameter item: The TabItem to convert into a UITabBarItem.
+    /// - Returns: A configured UITabBarItem.
+    /// - Note: The `tag` property of the UITabBarItem is set to the index of the TabItem.
+    private func tabBarItem(from item: TabItem) -> UITabBarItem {
         UITabBarItem(
-            title: transition.titleValue,
-            image: transition.image,
-            tag: transition.index
+            title: item.tabTitle,
+            image: item.tabImage,
+            tag: item.index
         )
     }
 
-    private func getTabController(_ transition: MainTransition) -> UIViewController {
-        appRouter.navigationController.setNavigationBarHidden(true, animated: false)
+    /// Returns the appropriate view controller for a given TabItem.
+    /// - Parameter transition: The TabItem to transition to.
+    /// - Returns: A UIViewController corresponding to the TabItem.
+    private func getTabController(for transition: TabItem) -> UIViewController {
+        let navigationController: UINavigationController
 
         switch transition {
         case .home:
-            homeCoordinator.router.navigationController.tabBarItem = getTabItem(transition)
-            return homeCoordinator.router.navigationController
+            navigationController = homeCoordinator.router.navigationController
         case .profile:
-            profileCoordinator.router.navigationController.tabBarItem = getTabItem(transition)
-            return profileCoordinator.router.navigationController
+            navigationController = profileCoordinator.router.navigationController
         }
+
+        navigationController.tabBarItem = tabBarItem(from: transition)
+        return navigationController
     }
 
+    /// Prepares and sets the main tab bar controller of the app.
+    /// - Parameter tabControllers: An array of view controllers to be set in the tab bar.
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.delegate = self
         tabBarController.setViewControllers(tabControllers, animated: false)
 
-        appRouter.navigationController.viewControllers.removeAll()
-        appRouter.navigationController.viewControllers = [tabBarController]
+        if appRouter.navigationController.viewControllers.first !== tabBarController {
+            appRouter.navigationController.viewControllers.removeAll()
+            appRouter.navigationController.viewControllers = [tabBarController]
+        }
     }
 }
 
 extension TabBarCoordinator: Coordinator {
     func start() {
-        let transitions: [MainTransition] = [.home(nil), .profile(nil)]
-            .sorted(by: { $0.index < $1.index })
+        let transitions: [TabItem] = [.home(nil), .profile(nil)]
 
-        let controllers: [UIViewController] = transitions.map({ getTabController($0) })
+        let controllers: [UIViewController] = transitions.map({ getTabController(for: $0) })
         prepareTabBarController(withTabControllers: controllers)
     }
 }

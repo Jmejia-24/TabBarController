@@ -1,5 +1,5 @@
 //
-//  MainTransition.swift
+//  TabItem.swift
 //  TabBarController
 //
 //  Created by Byron on 17/1/24.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-enum MainTransition {
+enum TabItem {
     case home(HomeTransition?)
     case profile(ProfileTransition?)
 
-    var identifier: String { "\(self)" }
-
-    var titleValue: String {
+    var tabTitle: String {
         switch self {
         case .home:
             return "Home"
@@ -31,12 +29,12 @@ enum MainTransition {
         }
     }
 
-    var image: UIImage? {
+    var tabImage: UIImage? {
         switch self {
         case .home:
-            return .init(systemName: "house.fill")
+            return UIImage(systemName: "house.fill")
         case .profile:
-            return .init(systemName: "person.fill")
+            return UIImage(systemName: "person.fill")
         }
     }
 }
