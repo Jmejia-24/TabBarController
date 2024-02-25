@@ -11,11 +11,14 @@ protocol HomeViewModelRepresentable: ObservableObject {
     func goToDetail()
 }
 
-final class HomeViewModel<R: HomeRouter> {
+final class HomeViewModel<R: Router> {
     var router: R?
 }
+
 extension HomeViewModel: HomeViewModelRepresentable {
     func goToDetail() {
-        router?.process(route: .detailScreen)
+        if let router = router as? (any HomeRouter) {
+            router.process(route: .detailScreen(title: "Home", gradientColors: [.green, .white]))
+        }
     }
 }

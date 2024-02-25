@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeCoordinator<R: HomeRouter> {
+final class HomeCoordinator<R: Router> {
     let router: R
 
     init(router: R) {

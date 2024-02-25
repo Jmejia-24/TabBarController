@@ -1,5 +1,5 @@
 //
-//  ProfileDetailView.swift
+//  DetailView.swift
 //  TabBarController
 //
 //  Created by Byron on 16/1/24.
@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-struct ProfileDetailView<T>: View where T: ProfileDetailViewModelRepresentable {
+struct DetailView<T>: View where T: DetailViewModelRepresentable {
     @ObservedObject var viewModel: T
 
     var body: some View {
         VStack {
-            Text("¡Profile Detail!")
-                .font(.title)
-                .padding()
-            Button("Go Home") {
-                viewModel.goTpHome()
+            Button("Go \(viewModel.title)") {
+                viewModel.goToRoot()
             }
             .padding(10)
             .background(
@@ -27,8 +24,9 @@ struct ProfileDetailView<T>: View where T: ProfileDetailViewModelRepresentable {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            LinearGradient(gradient: Gradient(colors: [.cyan, .white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: viewModel.gradientColors), startPoint: .top, endPoint: .bottom)
         )
         .edgesIgnoringSafeArea(.all)
+        .navigationTitle("\(viewModel.title) Detail")
     }
 }

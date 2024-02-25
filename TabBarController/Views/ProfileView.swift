@@ -12,10 +12,6 @@ struct ProfileView<T>: View where T: ProfileViewModelRepresentable {
 
     var body: some View {
         VStack {
-            Text("¡Profile!")
-                .font(.title)
-                .padding()
-
             Button("Log Out") {
                 viewModel.logOut()
             }
@@ -39,5 +35,6 @@ struct ProfileView<T>: View where T: ProfileViewModelRepresentable {
             LinearGradient(gradient: Gradient(colors: [.cyan, .white]), startPoint: .top, endPoint: .bottom)
         )
         .edgesIgnoringSafeArea(.all)
+        .navigationTitle("Profile")
     }
 }

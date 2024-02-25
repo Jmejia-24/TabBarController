@@ -12,9 +12,6 @@ struct LoginView<T>: View where T: LoginViewModelRepresentable {
 
     var body: some View {
         VStack {
-            Text("¡Login!")
-                .font(.title)
-                .padding()
             Button("Go to Home") {
                 viewModel.goHome()
             }
@@ -26,5 +23,6 @@ struct LoginView<T>: View where T: LoginViewModelRepresentable {
                 .background(Color.blue)
         )
         .edgesIgnoringSafeArea(.all)
+        .navigationTitle("Login")
     }
 }

@@ -5,11 +5,11 @@
 //  Created by Byron on 17/1/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum HomeTransition {
     case initialScreen
-    case detailScreen
+    case detailScreen(title: String, gradientColors: [Color])
 
     var identifier: String { "\(self)" }
 
@@ -17,8 +17,8 @@ enum HomeTransition {
         switch self {
         case .initialScreen:
             return HomeCoordinator(router: router)
-        case .detailScreen:
-            return HomeDetailCoordinator(router: router)
+        case .detailScreen(let title, let gradientColors):
+            return DetailCoordinator(router: router, title: title, gradientColors: gradientColors)
         }
     }
 }

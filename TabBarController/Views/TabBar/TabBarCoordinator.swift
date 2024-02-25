@@ -31,7 +31,6 @@ final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegat
         return coordinator
     }()
 
-
     init(router: R) {
         self.appRouter = router
     }
@@ -80,6 +79,8 @@ final class TabBarCoordinator<R: AppRouter>: NSObject, UITabBarControllerDelegat
 
 extension TabBarCoordinator: Coordinator {
     func start() {
+        appRouter.navigationController.setNavigationBarHidden(true, animated: false)
+
         let transitions: [TabItem] = [.home(nil), .profile(nil)]
 
         let controllers: [UIViewController] = transitions.map({ getTabController(for: $0) })

@@ -12,10 +12,6 @@ struct HomeView<T>: View where T: HomeViewModelRepresentable {
 
     var body: some View {
         VStack {
-            Text("¡Home!")
-                .font(.title)
-                .padding()
-
             Button("Go to Home Detail") {
                 viewModel.goToDetail()
             }
@@ -31,6 +27,6 @@ struct HomeView<T>: View where T: HomeViewModelRepresentable {
             LinearGradient(gradient: Gradient(colors: [.green, .white]), startPoint: .top, endPoint: .bottom)
         )
         .edgesIgnoringSafeArea(.all)
+        .navigationTitle("Home")
     }
 }
-
